@@ -1,0 +1,11 @@
+{
+  "name": "habits-api",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Jerónimo Matavel",
+    "url": "https://github.com/jeronimo-mz"
+  },
+  "private": true
+}
