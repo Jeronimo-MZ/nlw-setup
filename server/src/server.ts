@@ -1,5 +1,4 @@
 import fastify from "fastify";
-import { title } from "process";
 
 import { prisma } from "@/database/prisma";
 
