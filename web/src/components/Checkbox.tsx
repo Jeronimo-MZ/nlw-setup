@@ -6,12 +6,14 @@ type CheckboxProps = {
     defaultChecked?: boolean;
     crossWhenChecked?: boolean;
     textXL?: boolean;
+    checked?: boolean;
     onChange?: (checked: boolean) => void;
 };
 export const Checkbox: React.FC<CheckboxProps> = ({
     title,
     crossWhenChecked = false,
     defaultChecked = false,
+    checked,
     textXL = false,
     onChange,
 }) => {
@@ -22,6 +24,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 onChange && checked !== "indeterminate" && onChange(checked)
             }
             defaultChecked={defaultChecked}
+            checked={checked}
         >
             <div
                 className={[
