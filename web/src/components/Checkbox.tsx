@@ -5,14 +5,21 @@ type CheckboxProps = {
     title: string;
     crossWhenChecked?: boolean;
     textXL?: boolean;
+    onChange?: (checked: boolean) => void;
 };
 export const Checkbox: React.FC<CheckboxProps> = ({
     title,
     crossWhenChecked = false,
     textXL = false,
+    onChange,
 }) => {
     return (
-        <RadixCheckbox.Root className="flex items-center gap-3 group">
+        <RadixCheckbox.Root
+            className="flex items-center gap-3 group"
+            onCheckedChange={(checked) =>
+                onChange && checked !== "indeterminate" && onChange(checked)
+            }
+        >
             <div
                 className={[
                     "h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-700 border-2 border-zinc-800",
