@@ -22,7 +22,11 @@ export const SummaryTable = () => {
             </div>
             <div className="grid grid-rows-7 grid-flow-col gap-3">
                 {summaryDates.map((date) => (
-                    <HabitDay key={date.toString()} />
+                    <HabitDay
+                        amount={10}
+                        completed={Math.round(Math.random() * 10)}
+                        key={date.toString()}
+                    />
                 ))}
                 {amountOfDaysToFill > 0 &&
                     Array.from({ length: amountOfDaysToFill }).map((_, idx) => (
