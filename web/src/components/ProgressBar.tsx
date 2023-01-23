@@ -8,7 +8,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({ progress }) => {
                 role="progressbar"
                 aria-label="Progresso dos Hábitos completados neste dia"
                 aria-valuenow={progress}
-                className="h-3 rounded-xl bg-violet-600 w-3/4"
+                className="h-3 rounded-xl bg-violet-600"
                 style={{ width: `${progress}%` }}
             />
         </div>

@@ -47,7 +47,7 @@ export const NewHabit = () => {
                 <TextInput
                     placeholder="Ex.: Exercicios, Dormir bem, estudar,..."
                     placeholderTextColor={colors.zinc[400]}
-                    className="h-12 pl-3 rounded-lg mt-3 bg-zinc-800 text-white focus:border-2 focus:border-green-600"
+                    className="h-12 pl-3 rounded-lg mt-3 bg-zinc-900 text-white border-2 border-zinc-800 focus:border-green-600"
                 />
 
                 <Text className="mt-4 mb-3 text-white font-semibold text-base">
