@@ -41,9 +41,21 @@ export const HabitDay: React.FC<HabitDayProps> = ({
 
                     <ProgressBar progress={completedPercentage} />
                     <div className="mt-6 flex flex-col gap-3">
-                        <Checkbox title="Beber 2L de água" />
-                        <Checkbox title="Beber 2L de água" />
-                        <Checkbox title="Beber 2L de água" />
+                        <Checkbox
+                            crossWhenChecked
+                            textXL
+                            title="Beber 2L de água"
+                        />
+                        <Checkbox
+                            crossWhenChecked
+                            textXL
+                            title="Beber 2L de água"
+                        />
+                        <Checkbox
+                            crossWhenChecked
+                            textXL
+                            title="Beber 2L de água"
+                        />
                     </div>
 
                     <Popover.Arrow

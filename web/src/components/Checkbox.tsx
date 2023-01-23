@@ -3,8 +3,14 @@ import { Check } from "phosphor-react";
 
 type CheckboxProps = {
     title: string;
+    crossWhenChecked?: boolean;
+    textXL?: boolean;
 };
-export const Checkbox: React.FC<CheckboxProps> = ({ title }) => {
+export const Checkbox: React.FC<CheckboxProps> = ({
+    title,
+    crossWhenChecked = false,
+    textXL = false,
+}) => {
     return (
         <RadixCheckbox.Root className="flex items-center gap-3 group">
             <div
@@ -19,8 +25,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({ title }) => {
             </div>
             <span
                 className={[
-                    "font-semibold text-xl leading-tight text-white",
-                    "group-data-[state=checked]:line-through group-data-[state=checked]:text-zinc-400",
+                    "font-semibold leading-tight text-white",
+                    crossWhenChecked
+                        ? "group-data-[state=checked]:line-through group-data-[state=checked]:text-zinc-400"
+                        : "",
+                    textXL ? "text-xl" : "",
                 ].join(" ")}
             >
                 {title}
