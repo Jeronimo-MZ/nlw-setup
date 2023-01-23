@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+    Alert,
     ScrollView,
     Text,
     TextInput,
@@ -10,6 +11,7 @@ import { BackButton } from "../components/BackButton";
 import { Checkbox } from "../components/Checkbox";
 import { Feather } from "@expo/vector-icons";
 import colors from "tailwindcss/colors";
+import { api } from "../lib/axios";
 
 const availableWeekDays = [
     "Domingo",
@@ -23,6 +25,25 @@ const availableWeekDays = [
 
 export const NewHabit = () => {
     const [weekDays, setWeekDays] = useState<number[]>([]);
+    const [title, setTitle] = useState("");
+
+    const createNewHabit = async () => {
+        try {
+            if (!title.trim() || !weekDays.length) {
+                return Alert.alert(
+                    "Novo Hábito",
+                    "Informe o nome do hábito e escolha a periodicidade"
+                );
+            }
+            await api.post("habits", { title, weekDays });
+            setTitle("");
+            setWeekDays([]);
+            Alert.alert("Novo Hábito", "Hábito Criado com sucesso!");
+        } catch (error) {
+            console.log(error);
+            Alert.alert("Oops!", "Ocorreu um erro ao criar o hábito!");
+        }
+    };
 
     function toggleWeekDay(index: number) {
         if (weekDays.includes(index)) {
@@ -46,6 +67,8 @@ export const NewHabit = () => {
                 </Text>
                 <TextInput
                     placeholder="Ex.: Exercicios, Dormir bem, estudar,..."
+                    onChangeText={setTitle}
+                    value={title}
                     placeholderTextColor={colors.zinc[400]}
                     className="h-12 pl-3 rounded-lg mt-3 bg-zinc-900 text-white border-2 border-zinc-800 focus:border-green-600"
                 />
@@ -65,6 +88,7 @@ export const NewHabit = () => {
                 <TouchableOpacity
                     activeOpacity={0.7}
                     className="w-full items-center justify-center flex-row bg-green-600 rounded-lg mt-6 h-14"
+                    onPress={createNewHabit}
                 >
                     <Feather name="check" color={colors.white} size={20} />
                     <Text className="font-semibold text-base text-white ml-2">
