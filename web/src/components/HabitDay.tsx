@@ -22,7 +22,6 @@ export const HabitDay: React.FC<HabitDayProps> = ({
 }) => {
     const completedPercentage =
         amount > 0 ? Math.round((completed / amount) * 100) : 0;
-    console.log(completedPercentage);
     return (
         <Popover.Root>
             <Popover.Trigger
