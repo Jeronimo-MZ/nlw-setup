@@ -3,10 +3,11 @@ import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { api } from "../lib/axios";
 import { Checkbox } from "./Checkbox";
+import { HabitsList as HabitList } from "./HabitList";
 import { ProgressBar } from "./ProgressBar";
 
 type HabitDayProps = {
-    completed?: number;
+    defaultCompleted?: number;
     amount?: number;
     date: Date;
 };
@@ -20,29 +21,21 @@ function getCompletedBorderColors(completed: number) {
     return "bg-violet-500 border-violet-400";
 }
 
-type Day = {
-    possibleHabits: { id: string; title: string }[];
-    completedHabits: string[];
-};
-
 export const HabitDay: React.FC<HabitDayProps> = ({
     amount = 0,
-    completed = 0,
+    defaultCompleted = 0,
     date,
 }) => {
-    const [day, setDay] = useState<Day>();
-    useEffect(() => {
-        api.get("/day", { params: { date } }).then((response) => {
-            setDay(response.data);
-            console.log(response.data);
-        });
-    }, []);
-
+    const [completed, setCompleted] = useState(defaultCompleted);
     const completedPercentage =
         amount > 0 ? Math.round((completed / amount) * 100) : 0;
     const parsedDate = dayjs(date);
     const dayOfWeek = parsedDate.format("dddd");
     const dayAndMonth = parsedDate.format("DD/MM");
+
+    const handleCompletedChange = (newCompleted: number) => {
+        setCompleted(newCompleted);
+    };
     return (
         <Popover.Root>
             <Popover.Trigger
@@ -60,19 +53,10 @@ export const HabitDay: React.FC<HabitDayProps> = ({
                     </span>
 
                     <ProgressBar progress={completedPercentage} />
-                    <div className="mt-6 flex flex-col gap-3">
-                        {day?.possibleHabits.map((habit) => (
-                            <Checkbox
-                                defaultChecked={day.completedHabits.includes(
-                                    habit.id
-                                )}
-                                crossWhenChecked
-                                textXL
-                                title={habit.title}
-                                key={habit.id}
-                            />
-                        ))}
-                    </div>
+                    <HabitList
+                        date={date}
+                        onCompletedChange={handleCompletedChange}
+                    />
 
                     <Popover.Arrow
                         className="fill-zinc-900"

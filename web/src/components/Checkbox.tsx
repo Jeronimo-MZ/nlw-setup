@@ -7,6 +7,7 @@ type CheckboxProps = {
     crossWhenChecked?: boolean;
     textXL?: boolean;
     checked?: boolean;
+    disabled?: boolean;
     onChange?: (checked: boolean) => void;
 };
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -16,6 +17,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     checked,
     textXL = false,
     onChange,
+    disabled,
 }) => {
     return (
         <RadixCheckbox.Root
@@ -25,6 +27,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             }
             defaultChecked={defaultChecked}
             checked={checked}
+            disabled={disabled}
         >
             <div
                 className={[
