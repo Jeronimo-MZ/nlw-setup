@@ -4,7 +4,7 @@ export declare global {
             home: undefined;
             new: undefined;
             habit: {
-                date: Date;
+                date: string;
             };
         }
     }

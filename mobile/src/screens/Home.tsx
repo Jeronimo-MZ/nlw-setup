@@ -77,7 +77,7 @@ export const Home = () => {
                                 date={date}
                                 key={date.toISOString()}
                                 onPress={() =>
-                                    navigate("habit", { date: date })
+                                    navigate("habit", { date: date.toString() })
                                 }
                             />
                         );

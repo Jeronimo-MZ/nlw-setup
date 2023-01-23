@@ -1,5 +1,6 @@
 import axios from "axios";
+import { env } from "../utils/env";
 
 export const api = axios.create({
-    baseURL: "https://cdbd-160-119-113-182.ap.ngrok.io",
+    baseURL: env.apiURL,
 });
