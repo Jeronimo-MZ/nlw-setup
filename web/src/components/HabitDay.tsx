@@ -39,12 +39,20 @@ export const HabitDay: React.FC<HabitDayProps> = ({
     return (
         <Popover.Root>
             <Popover.Trigger
-                className={`w-10 h-10 border-2 rounded-lg ${getCompletedBorderColors(
-                    completedPercentage
-                )}`}
+                className={[
+                    `w-10 h-10 border-2 rounded-lg transition-colors ${getCompletedBorderColors(
+                        completedPercentage
+                    )}`,
+                    "focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-background",
+                ].join(" ")}
             />
             <Popover.Portal>
-                <Popover.Content className="min-w-[320px] p-6 rounder-2xl bg-zinc-900 flex flex-col">
+                <Popover.Content
+                    className={[
+                        "min-w-[320px] p-6 rounder-2xl bg-zinc-900 flex flex-col",
+                        "focus:outline-none focus:ring-2 focus:ring-violet-600 rounded-lg",
+                    ].join(" ")}
+                >
                     <span className="font-semibold text-zinc-400 capitalize">
                         {dayOfWeek}
                     </span>

@@ -21,7 +21,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
     return (
         <RadixCheckbox.Root
-            className="flex items-center gap-3 group"
+            className="flex items-center gap-3 group focus:outline-none"
             onCheckedChange={(checked) =>
                 onChange && checked !== "indeterminate" && onChange(checked)
             }
@@ -32,7 +32,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             <div
                 className={[
                     "h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-700 border-2 border-zinc-800",
-                    "group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-600",
+                    "group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-600 transition-colors",
+                    "group-focus:ring-2 group-focus:ring-violet-600 group-focus:ring-offset-2 group-focus:ring-offset-background",
                 ].join(" ")}
             >
                 <RadixCheckbox.Indicator>

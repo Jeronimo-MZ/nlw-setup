@@ -34,7 +34,10 @@ export const NewHabitForm = () => {
                 Qual seu comprometimento?
             </label>
             <input
-                className="p-4 rounded-lg mt-12 bg-zinc-800 text-white placeholder:text-zinc-700"
+                className={[
+                    "p-4 rounded-lg mt-12 bg-zinc-800 text-white placeholder:text-zinc-700",
+                    "focus:outline-none focus:ring-2 focus:ring-violet-600 focus:ring-offset-2 focus:ring-offset-background",
+                ].join(" ")}
                 name="title"
                 value={title}
                 onChange={(event) => setTitle(event.target.value)}
@@ -64,7 +67,10 @@ export const NewHabitForm = () => {
             </div>
 
             <button
-                className="mt-6 rounded-lg p-4 gap-3 flex items-center justify-center font-semibold bg-green-600 hover:bg-green-500 duration-200"
+                className={[
+                    "mt-6 rounded-lg p-4 gap-3 flex items-center justify-center font-semibold bg-green-600 hover:bg-green-500 duration-200",
+                    "focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-colors",
+                ].join(" ")}
                 type="submit"
             >
                 <Check size={20} weight="bold" />
