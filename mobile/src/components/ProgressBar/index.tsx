@@ -1,15 +1,31 @@
+import { useEffect } from "react";
 import { View } from "react-native";
+import Animated, {
+    useAnimatedStyle,
+    useSharedValue,
+    withTiming,
+} from "react-native-reanimated";
 
 type ProgressBarProps = {
     progress?: number;
 };
 export const ProgressBar: React.FC<ProgressBarProps> = ({ progress = 0 }) => {
+    const sharedProgress = useSharedValue(progress);
+    const style = useAnimatedStyle(() => ({
+        width: `${sharedProgress.value}%`,
+    }));
+    useEffect(() => {
+        sharedProgress.value = withTiming(progress, {
+            duration: 300,
+        });
+    }, [progress]);
+
     return (
         <View className="w-full h-3 rounded-xl bg-zinc-700 mt-4">
-            <View
+            <Animated.View
                 className="h-3 rounded-xl bg-violet-600"
-                style={{ width: `${progress}%` }}
-            ></View>
+                style={style}
+            ></Animated.View>
         </View>
     );
 };
