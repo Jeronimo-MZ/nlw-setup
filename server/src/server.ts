@@ -1,3 +1,5 @@
+import "./lib/dayjs";
+
 import fastify from "fastify";
 
 import { setupRoutes } from "./routes";
