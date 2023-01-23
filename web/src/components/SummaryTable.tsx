@@ -44,6 +44,7 @@ export const SummaryTable = () => {
                         <HabitDay
                             amount={dayInSummary?.amount}
                             completed={dayInSummary?.completed}
+                            date={date}
                             key={date.toString()}
                         />
                     );

@@ -3,6 +3,7 @@ import { Check } from "phosphor-react";
 
 type CheckboxProps = {
     title: string;
+    defaultChecked?: boolean;
     crossWhenChecked?: boolean;
     textXL?: boolean;
     onChange?: (checked: boolean) => void;
@@ -10,6 +11,7 @@ type CheckboxProps = {
 export const Checkbox: React.FC<CheckboxProps> = ({
     title,
     crossWhenChecked = false,
+    defaultChecked = false,
     textXL = false,
     onChange,
 }) => {
@@ -19,6 +21,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             onCheckedChange={(checked) =>
                 onChange && checked !== "indeterminate" && onChange(checked)
             }
+            defaultChecked={defaultChecked}
         >
             <div
                 className={[
